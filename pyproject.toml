@@ -5,11 +5,34 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "numpy>=2.3.2",
+    "matplotlib~=3.9.0",
+    "numpy~=2.0.0",
+    "pandas~=2.2.0",
+    "tqdm~=4.67.0",
+    "huggingface-hub~=0.23.0",
+    "torch",
+    "torchvision",
+    "torchaudio",
 ]
 
 [dependency-groups]
 dev = [
     "ipykernel>=6.30.1",
     "ipywidgets>=8.1.7",
+]
+
+[[tool.uv.index]]
+name = "pytorch-cuda"
+url = "https://download.pytorch.org/whl/cu124"
+explicit = true
+
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cuda", marker = "platform_system == 'Windows' or platform_system == 'Linux'" }
+]
+torchvision = [
+    { index = "pytorch-cuda", marker = "platform_system == 'Windows' or platform_system == 'Linux'" }
+]
+torchaudio = [
+    { index = "pytorch-cuda", marker = "platform_system == 'Windows' or platform_system == 'Linux'" }
 ]
